@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1080px, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
+    <title>2Signify</title>
+</head>
+<body>
+<header id="header"> Welcome to 2Signify! </header> 
+    <section id="inputs">
+        <form id="link-secret">
+        <label class="label">Insert unsigned buy-link here:&nbsp;&nbsp;</label><input type="text" id="unsigned-link" size="128" for="link-secret"> <br><br><br>
+        <label class="label">Insert buy-link secret word here:&nbsp;&nbsp;</label><input type="text" id="secret-word" size="104" for="link-secret"> <br><br><br>
+        <input type="button" id="calculate" value="Calculate signature" onclick="serializeLink()">
+        </form>
+    </section>
+    <section id="outputs" style="display:none;">
+        <table>
+            <tr><td><p>Sorted parameters (all):</p></td><td id="ordered-parameters"></td ></tr>
+            <tr><td><p>Serialized parameters (only required):</p></td><td id="serialized-parameters"></td></tr>
+            <tr><td><p>Signaure parameter:</p></td><td id="signature"></td></tr>
+            <tr><td><p>Signed buy-link:</p></td><td id="signed-link"></td></tr>
+        </table>
+    </section>
+</body>
+</html>
