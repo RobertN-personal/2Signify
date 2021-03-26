@@ -1,6 +1,6 @@
 #header {
     text-align: center;
-    font-size: 10vh;
+    font-size: 7vh;
     font-family: 'Cinzel', serif;
     color: #fff;
     text-shadow: 2px 2px rgb(3, 17, 219);
@@ -14,7 +14,7 @@ body {
 }
 .label, p {
     text-align: center;
-    font-size: 3vh;
+    font-size: 2vh;
     font-family: 'Cinzel', serif;
     color: #fff;
     text-shadow: 2px 2px #000;
