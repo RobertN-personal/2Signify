@@ -34,12 +34,30 @@
             // Output the sorted parameters
             document.getElementById("ordered-parameters").innerHTML = parameters;
             // Verify required parameters for the signature and put their values in array goodParam
+            // For dynamic products
+            if (parameters.includes("dynamic=1")){
             for(i = 0; i < parameters.length; i++) {
                 param[i] = parameters[i].split("=");
-                if (param[i][0] == "prod" || param[i][0] == "qty" || param[i][0] == "opt" || param[i][0] == "price" || param[i][0] == "return-url" || param[i][0] == "customer-ext-ref" || param[i][0] == "coupon" || param[i][0] == "currency" || param[i][0] == "item-ext-ref" || param[i][0] == "renewal-price" || param[i][0] == "duration" || param[i][0] == "recurrence" || param[i][0] == "type" || param[i][0] == "description" || param[i][0] == "lock" || param[i][0] == "customer-ref" || param[i][0] == "order-ext-ref" || param[i][0] == "expiration" || param[i][0] == "return-type") {
+                if (param[i][0] == "prod" || param[i][0] == "qty" || param[i][0] == "price" || param[i][0] == "return-url" || param[i][0] == "customer-ext-ref" || param[i][0] == "coupon" || param[i][0] == "currency" || param[i][0] == "item-ext-ref" || param[i][0] == "renewal-price" || param[i][0] == "duration" || param[i][0] == "recurrence" || param[i][0] == "type" || param[i][0] == "description" || param[i][0] == "lock" || param[i][0] == "customer-ref" || param[i][0] == "order-ext-ref" || param[i][0] == "expiration" || param[i][0] == "return-type") {
+					goodParam.push(param[i][1]);
+                }		
+            }
+            for(i =0; i < goodParam.length; i++) {
+                goodParam[i] = decodeURIComponent(goodParam[i].replace(/\+/g,  " "));
+            }
+        } else  {
+            // For catalogue products
+            for(i = 0; i < parameters.length; i++) {
+                param[i] = parameters[i].split("=");
+                if (param[i][0] == "return-url" || param[i][0] == "customer-ext-ref" || param[i][0] == "coupon" || param[i][0] == "item-ext-ref" ||  param[i][0] == "type" || param[i][0] == "description" || param[i][0] == "lock" || param[i][0] == "customer-ref" || param[i][0] == "order-ext-ref" || param[i][0] == "expiration" || param[i][0] == "return-type") {
                     goodParam.push(param[i][1]);
                 }
             }
+                for(i =0; i < goodParam.length; i++) {
+                goodParam[i] = decodeURIComponent(goodParam[i].replace(/\+/g,  " "));
+            }
+            }
+        
             // Get the serialized string which needs to be encrypted and display it
             for (j=0; j < goodParam.length; j++) {
                 cereal += goodParam[j].length + goodParam[j];
@@ -50,6 +68,7 @@
             signify = hash.toString();
             document.getElementById("signature").innerHTML = signify;
             // Display full link with signature
+            // If the link contains currency, we need to escape &curren (¤) WIP
             document.getElementById("signed-link").innerHTML = link + "&signature=" + signify;
 }
     </script>
