@@ -45,11 +45,11 @@
             for(i =0; i < goodParam.length; i++) {
                 goodParam[i] = decodeURIComponent(goodParam[i].replace(/\+/g,  " "));
             }
-        } else  {
+        } else  if (parameters.includes("price")){
             // For catalogue products
             for(i = 0; i < parameters.length; i++) {
                 param[i] = parameters[i].split("=");
-                if (param[i][0] == "return-url" || param[i][0] == "customer-ext-ref" || param[i][0] == "coupon" || param[i][0] == "item-ext-ref" ||  param[i][0] == "type" || param[i][0] == "description" || param[i][0] == "lock" || param[i][0] == "customer-ref" || param[i][0] == "order-ext-ref" || param[i][0] == "expiration" || param[i][0] == "return-type") {
+                if (param[i][0] == "prod" || param[i][0] == "qty" || param[i][0] == "currency" || param[i][0] == "price" || param[i][0] == "return-url" || param[i][0] == "customer-ext-ref" || param[i][0] == "coupon" || param[i][0] == "item-ext-ref" ||  param[i][0] == "type" || param[i][0] == "description" || param[i][0] == "lock" || param[i][0] == "customer-ref" || param[i][0] == "order-ext-ref" || param[i][0] == "expiration" || param[i][0] == "return-type" || param[i][0] == "opt" || param[i][o] == "order-additional-fields") {
                     goodParam.push(param[i][1]);
                 }
             }
