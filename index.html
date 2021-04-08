@@ -17,6 +17,7 @@
     
     <script>
         function serializeLink() {
+            let re = /price/;
             document.getElementById('outputs').style.display = "block"; // Unhide section outputs
             let param = [];
             var goodParam = [];
@@ -45,7 +46,7 @@
             for(i =0; i < goodParam.length; i++) {
                 goodParam[i] = decodeURIComponent(goodParam[i].replace(/\+/g,  " "));
             }
-        } else  if (parameters.includes("price")){
+        } else  if (parameters.includes(re)){
             // For catalogue products
             for(i = 0; i < parameters.length; i++) {
                 param[i] = parameters[i].split("=");
